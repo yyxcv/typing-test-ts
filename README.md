@@ -12,7 +12,7 @@ I use the app on a daily basis but there are still many shortcomings if it were 
 * Menu is missing
 * UI is only english 
 * UI is not yet intuitive
-*...
+* ...
 
 I will continue to work on the Project and will address these shortcomings one by one.
 The backend code for this app will be soon publicly available too.
