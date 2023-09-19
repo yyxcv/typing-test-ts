@@ -5,8 +5,9 @@ It is a work in progress and not meant to be used in production.
 
 I use the app on a daily basis but there are still many shortcomings. Some of these are:
 
-* currently only tested in Firefox on Windows
+* currently only tested for Firefox on Windows
 * only tested for a german Windows keyboard
+* some of the keys (WinL, WinR, PrtSc, ScLk) need to be remapped with OS tools, so that they can be typed. There is no documentation on how to do that yet.  
 * API error handling is missing
 * Menu is missing
 * UI is only english 
