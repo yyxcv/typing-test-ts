@@ -3,7 +3,7 @@
 This is a project I started in order to learn React and to improve my typing.
 It is a work in progress and not meant to be used in production.
 
-I use the app on a daily basis but there are still many shortcomings. Some of these are:
+I use the app on a daily basis but there are still many shortcomings if it were meant to be used by a broader audience. Some of these are:
 
 * currently only tested for Firefox on Windows
 * only tested for a german Windows keyboard
