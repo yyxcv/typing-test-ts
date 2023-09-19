@@ -1,0 +1,29 @@
+
+.lessonSelector {
+    margin-top: 10px;
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+}
+.lessonSelector > div{
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    margin-left:15px;
+
+}
+
+.lessonSelector span {
+    color: #ccc;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.lessonSelector select {
+    background: #282c34;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #ccc;
+    padding: 4px 15px;
+    font-size: 14px;
+}

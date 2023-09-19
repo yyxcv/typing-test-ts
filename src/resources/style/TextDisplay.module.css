@@ -1,0 +1,91 @@
+
+.space {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+
+.active:before {
+    content: '|';
+    position: absolute;
+    animation: cursor-blink 1.5s steps(2) infinite;
+    left: -10px;
+    top: 0;
+}
+
+.char {
+    position: relative;
+}
+
+.numPadChar {
+    color: #70bdff;
+}
+
+
+.controlChar {
+    font-size: 18px !important;
+    min-height: 40px;
+    justify-content: center;
+    align-items: center;
+    top: -7px;
+    font-style: italic;
+    line-height: 40px;
+    border-bottom: 1px solid transparent;
+}
+
+.controlChar + .controlChar {
+    border-left: 1px dashed rgba(255, 255, 255, 0.5);
+}
+
+.char, .errorBacklog {
+    font-size: 40px;
+}
+
+.errorBacklog {
+    position: absolute;
+    color: red;
+    background: black;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    z-index: 1;
+    font-style: normal;
+    display: flex;
+}
+
+.errorBacklog > span {
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.controlCharErrorBacklog {
+    font-size: 18px !important;
+    display: inline-flex;
+    min-height: 40px;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    border-bottom: 1px solid transparent;
+}
+
+.controlCharErrorBacklog + .controlCharErrorBacklog {
+    border-left: 1px dashed rgba(200, 200, 200, 0.3);
+
+}
+
+.active {
+    border-bottom: 1px solid white;
+}
+
+@keyframes cursor-blink {
+    0% {
+        opacity: 0;
+    }
+}
+
+.upperCaseTimingError {
+    color: #c26101;
+}
+
+.upperCaseTimingWarning {
+    color: #adad5c;
+}

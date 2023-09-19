@@ -1,0 +1,46 @@
+
+.characterBar {
+    padding: 4px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.active {
+    background: #275d1a;
+}
+
+.char {
+    color: #ccc;
+    font-size: 16px;
+    display: inline-block;
+    padding: 1px 5px;
+    margin: 3px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.multiChar{
+    font-size:12px;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.numPadChar{
+    border: 1px solid #70bdff88;
+}
+
+.speedIndicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+}
+
+
+
+.highErrorRate {
+    font-weight: bold;
+    color: #b00;
+}

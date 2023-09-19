@@ -1,0 +1,15 @@
+
+.statsTable{
+    border-collapse: collapse;
+}
+
+.statsTable th{
+    font-weight: bold;
+
+}
+
+.statsTable th, .statsTable td {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-bottom: 1px solid grey;
+}

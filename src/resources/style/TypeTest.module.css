@@ -1,0 +1,8 @@
+
+.testArea:not(.hasFocus) {
+    filter: blur(4px);
+}
+
+.hasFocus{
+
+}
