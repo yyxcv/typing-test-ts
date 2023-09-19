@@ -1,8 +1,8 @@
 import {TestResult, TestResultStats} from "@/src/lib/redux";
+import Constants from "./Constants";
 
 
-const STANDARD_WORD_LENGTH = 5
-const MILLISECONDS_PER_MINUTE = 60000
+
 
 class Statistics {
 
@@ -10,7 +10,7 @@ class Statistics {
         const duration = r.endTime - r.startTime;
         const charsCount = r.charResults.length;
         const errorCount = r.charResults.filter(char => char.error).length;
-        const wordsPerMinute = charsCount === 0 ? 0 : MILLISECONDS_PER_MINUTE / STANDARD_WORD_LENGTH / (duration / charsCount);
+        const wordsPerMinute = charsCount === 0 ? 0 : Constants.MILLISECONDS_PER_MINUTE / Constants.STANDARD_WORD_LENGTH / (duration / charsCount);
         const typedCorrectlyQuote = charsCount === 0 ? 1 : 1 - (errorCount / charsCount);
 
 
@@ -29,7 +29,7 @@ class Statistics {
             const eCharCount = exStats.length;
             const eErrorCount = exStats.filter(char => char.error).length;
             const eDuration = exStats.reduce((acc, el) => acc + el.duration, 0);
-            const eWordsPerMinute = eCharCount === 0 ? 0 : MILLISECONDS_PER_MINUTE / STANDARD_WORD_LENGTH / (eDuration / eCharCount);
+            const eWordsPerMinute = eCharCount === 0 ? 0 : Constants.MILLISECONDS_PER_MINUTE / Constants.STANDARD_WORD_LENGTH / (eDuration / eCharCount);
             const eTypedCorrectlyQuote = eCharCount === 0 ? 1 : 1 - (eErrorCount / eCharCount);
 
             stats.exerciseCharStats = {

@@ -10,32 +10,36 @@ interface CharacterBarCharProps {
     id: string,
     displayString: string,
     charClass: string,
-    hasMultiCharStringRepresentation: boolean,
+    hasMultiCharRepresentation: boolean,
     isActive: boolean,
     onClickHandler: (id: string) => void,
     stats: CharStat | null,
     errorThreshold: number,
 }
 
-export function CharacterBarChar({
-                                     id,
-                                     displayString,
-                                     charClass,
-                                     hasMultiCharStringRepresentation,
-                                     isActive,
-                                     onClickHandler,
-                                     stats,
-                                     errorThreshold
-                                 }: CharacterBarCharProps) {
-    let innerHtml;
-    let styleHighErrorRate = "";
-    let styleNumPadChar = "";
-    let styleMultiChar = "";
-    let speedColor = "rgba(0,0,0,0)";
-    let speed = 0;
+export function CharacterBarChar(
+    {
+        id,
+        displayString,
+        charClass,
+        hasMultiCharRepresentation,
+        isActive,
+        onClickHandler,
+        stats,
+        errorThreshold
+    }: CharacterBarCharProps) {
+
+    const elementId = `character-bar-element-${id}`;
     const [isHovering, setIsHovering] = useState(false);
 
-    if (hasMultiCharStringRepresentation) {
+    let tooltipHtml;
+    let styleNumPadChar = "";
+    let styleMultiChar = "";
+    let styleHighErrorRate = "";
+    let speedColor = "rgba(0,0,0,0)";
+    let displayedSpeed = 0;
+
+    if (hasMultiCharRepresentation) {
         styleMultiChar = styles.multiChar;
     }
 
@@ -43,33 +47,33 @@ export function CharacterBarChar({
         styleNumPadChar = styles.numPadChar;
     }
 
-    if (stats !== null) {
-        const hitRate = stats.hitRate * 100;
-        const speedInWordsPerMinute = 12000 / stats.avgDuration;
+    if (stats) {
 
-        if (hitRate < errorThreshold * 100) {
+        if (stats.hitRate < errorThreshold) {
             styleHighErrorRate = styles.highErrorRate;
         }
 
-        speed = Math.min(speedInWordsPerMinute, Constants.TARGET_SPEED_IN_WORDS_PER_MINUTE);
-        const h = (speed / Constants.TARGET_SPEED_IN_WORDS_PER_MINUTE) * 0.4;
+        const speedInWordsPerMinute = Constants.MILLISECONDS_PER_MINUTE / Constants.STANDARD_WORD_LENGTH / stats.avgDuration;
+        displayedSpeed = Math.min(speedInWordsPerMinute, Constants.TARGET_SPEED_IN_WORDS_PER_MINUTE) / Constants.TARGET_SPEED_IN_WORDS_PER_MINUTE * 100;
+        const h = (displayedSpeed / Constants.TARGET_SPEED_IN_WORDS_PER_MINUTE) * 0.18;
         const hsv = hsvToRgb(h, 0.9, 0.9);
         speedColor = rgbToHex(...hsv);
 
-        innerHtml = <>
+        tooltipHtml = <>
             <div>Char: {id}</div>
             <div>WPM: {speedInWordsPerMinute.toFixed(2)}</div>
-            <div>Hit-Rate: {hitRate.toFixed(2)}%</div>
+            <div>Hit-Rate: {(stats.hitRate * 100).toFixed(2)}%</div>
             <div>Count: {stats.count}</div>
         </>;
+
     } else {
-        innerHtml = <>
+
+        tooltipHtml = <>
             <div>Char: {id}</div>
             <div>no data yet</div>
         </>;
-    }
 
-    const elementId = `character-bar-element-${id}`;
+    }
 
     return (
         <span
@@ -78,12 +82,12 @@ export function CharacterBarChar({
             onClick={() => onClickHandler(id)}
             onMouseOver={() => setIsHovering(true)}
             onMouseOut={() => setIsHovering(false)}
-
-        >{displayString === ' ' ? '␣' : displayString}
+        >
+            {displayString === ' ' ? '␣' : displayString}
             <span className={styles.speedIndicator}
-                  style={{backgroundColor: speedColor, width:  Math.min(speed, 100) + '%'}}>
+                  style={{backgroundColor: speedColor, width: Math.min(displayedSpeed, 100) + '%'}}>
                   <Tooltip
-                      innerHtml={innerHtml}
+                      innerHtml={tooltipHtml}
                       isVisible={isHovering}
                   />
             </span>

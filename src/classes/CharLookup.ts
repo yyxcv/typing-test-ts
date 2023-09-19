@@ -89,7 +89,7 @@ export default class CharLookup {
         return this.lookup.records[recordId].characters[0];
     }
 
-    hasMultiCharStringRepresentation(char: string) {
+    hasMultiCharRepresentation(char: string) {
         const record = this.recordByChar(char);
         return (['CONTROL', 'MODIFIER'].includes(record.class) || record.id === 'NumLock') && this.displayStringByChar(char) !== char
     }

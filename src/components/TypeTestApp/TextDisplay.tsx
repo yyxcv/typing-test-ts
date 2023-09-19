@@ -24,7 +24,7 @@ export function TextDisplay({text, indexOfNextChar, errorCharBacklog, upperCaseT
         const displayChar = charLookup.displayStringByChar(char);
         const charRecord = charLookup.recordByChar(char);
         const styleSpace = char === ' ' ? styles.space : '';
-        const styleControlChar = charLookup.hasMultiCharStringRepresentation(char) ? styles.controlChar : '';
+        const styleControlChar = charLookup.hasMultiCharRepresentation(char) ? styles.controlChar : '';
         const styleNumPadChar = charRecord.class === 'NUMPAD' ? styles.numPadChar : '';
 
         let upperCaseTimingSpeedColor = null;

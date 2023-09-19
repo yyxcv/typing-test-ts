@@ -17,7 +17,7 @@ export function ErrorBacklog({backlog, styleNumPadChar}: ErrorBacklogProps) {
         <span className={`${styles.errorBacklog} ${styleNumPadChar}`}>
             {backlog.split('').map((char, i) => {
                 const displayChar = charLookup.displayStringByChar(char).replaceAll(" ", "␣");
-                const styleControlChar = charLookup.hasMultiCharStringRepresentation(char) ? styles.controlCharErrorBacklog : '';
+                const styleControlChar = charLookup.hasMultiCharRepresentation(char) ? styles.controlCharErrorBacklog : '';
 
                 return <span className={styleControlChar} key={i}>{displayChar}</span>
             })

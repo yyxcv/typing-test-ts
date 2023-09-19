@@ -19,6 +19,7 @@ export function CharacterBar() {
 
     return (
         <div className={styles.characterBar}>
+
             {charLookup.records().map(item => {
                 const statsArray = charStats.filter(it => it.id === item.id);
                 const stats = statsArray.length > 0 ? statsArray[0] : null;
@@ -30,7 +31,7 @@ export function CharacterBar() {
                         key={item.id}
                         charClass={item.class}
                         isActive={activeChars.includes(item.id)}
-                        hasMultiCharStringRepresentation={charLookup.hasMultiCharStringRepresentation(item.characters[0])}
+                        hasMultiCharRepresentation={charLookup.hasMultiCharRepresentation(item.characters[0])}
                         displayString={displayString}
                         onClickHandler={toggleCharActivity}
                         stats={stats}
@@ -38,6 +39,7 @@ export function CharacterBar() {
                     />
                 )
             })}
+
         </div>
     )
 }
